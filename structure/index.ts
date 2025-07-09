@@ -1,6 +1,7 @@
 import {ListItemBuilder, StructureResolver} from 'sanity/structure';
 import home from './homeStructure'
 import pages from './pageStructure'
+import settings from './settingStructure'
 
 /**
  * Structure overrides
@@ -26,6 +27,7 @@ const hiddenDocTypes = (listItem: ListItemBuilder) => {
   return ![
     'home',
     'page',
+    'settings',
   ].includes(id)
 }
 
@@ -36,6 +38,8 @@ export const structure: StructureResolver = (S, context) =>
       home(S, context),
       S.divider(),
       pages(S, context),
+      S.divider(),
+      settings(S, context),
       S.divider(),
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ])
