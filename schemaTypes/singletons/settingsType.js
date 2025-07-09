@@ -16,6 +16,9 @@ export const settingsType = defineType({
         {
           name: 'logo',
           type: 'image',
+          options: {
+            hotspot: true,
+          },
         },
         {
           name: 'menu',
