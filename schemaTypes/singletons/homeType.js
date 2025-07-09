@@ -22,6 +22,10 @@ export const homeType = defineField({
         }),
       ],
     }),
+    {
+      name: 'popup',
+      type: 'portableTextSimple',
+    },
   ],
   preview: {
     prepare() {
