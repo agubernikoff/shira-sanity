@@ -11,7 +11,8 @@ const objects = [menuType, menuLinksType, collageType]
 
 import {homeType} from './singletons/homeType'
 import {settingsType} from './singletons/settingsType'
-const singletons = [homeType, settingsType]
+import {evenBetterType} from './singletons/evenBetterType'
+const singletons = [homeType, settingsType, evenBetterType]
 
 import {portableTextType} from './portableText/portableTextType'
 import {portableTextSimpleType} from './portableText/portableTextSimpleType'
