@@ -5,13 +5,14 @@ import {useClient} from 'sanity'
 import imageUrlBuilder from '@sanity/image-url'
 
 export default function CollageInput(props) {
-  const client = useClient()
+  const client = useClient({apiVersion: '2025-02-10'})
   const builder = imageUrlBuilder(client)
 
   // Helper function to generate image URLs
   const urlFor = (source) => builder.image(source)
 
   const {value, renderDefault} = props
+  console.log('CollageInput value:', value)
 
   return (
     <Stack space={4}>
@@ -37,7 +38,9 @@ export default function CollageInput(props) {
             }}
           >
             {value?.images?.map((img, i) => {
-              const url = img.image ? urlFor(img.image).url() : null
+              if (!img?.image?.asset) return null // <-- skip if image not ready
+
+              const url = urlFor(img.image).url()
               if (!url) return null
 
               return (
@@ -46,13 +49,17 @@ export default function CollageInput(props) {
                   src={url}
                   style={{
                     position: 'absolute',
-                    left: img.x || '0',
-                    top: img.y || '0',
-                    width: img.width || 'auto',
-                    zIndex: img.zIndex || 1,
+                    [img.horizontalAlignFrom ?? 'left']: img.horizontalPosition ?? '0',
+                    [img.verticalAlignFrom ?? 'top']: img.verticalPosition ?? '0',
+                    width: img.width ?? 'auto',
+                    zIndex: img.zIndex ?? 1,
                     objectFit: 'cover',
                     maxWidth: '100%',
                     maxHeight: '100%',
+                    transform: `
+                      ${img.centerHorizontally ? 'translateX(-50%)' : ''}
+                      ${img.centerVertically ? 'translateY(-50%)' : ''}
+                    `.trim(),
                   }}
                   alt=""
                 />
