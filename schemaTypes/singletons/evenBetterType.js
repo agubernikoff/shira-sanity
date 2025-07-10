@@ -10,6 +10,10 @@ export const evenBetterType = defineField({
   icon: LinkIcon,
   fields: [
     {
+      name: 'logo',
+      type: 'image',
+    },
+    {
       name: 'headerText',
       type: 'portableTextSimple',
     },
