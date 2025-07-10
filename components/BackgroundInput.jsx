@@ -1,36 +1,7 @@
 // components/BackgroundInput.js
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Stack, Card, Text, Button, Grid, Flex, TextInput} from '@sanity/ui'
 import {set, unset} from 'sanity'
-
-const PRESET_COLORS = [
-  '#ffffff',
-  '#f8f9fa',
-  '#e9ecef',
-  '#dee2e6',
-  '#ced4da',
-  '#adb5bd',
-  '#6c757d',
-  '#495057',
-  '#343a40',
-  '#212529',
-  '#000000',
-  '#ff6b6b',
-  '#ee5a24',
-  '#feca57',
-  '#48dbfb',
-  '#0abde3',
-  '#00d2d3',
-  '#ff9ff3',
-  '#54a0ff',
-  '#5f27cd',
-  '#00d8d6',
-  '#ff3838',
-  '#ff9500',
-  '#ffdd59',
-  '#32ff7e',
-  '#7d5fff',
-]
 
 const PRESET_GRADIENTS = [
   'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -47,7 +18,15 @@ const PRESET_GRADIENTS = [
 
 export default function BackgroundInput(props) {
   const {value, onChange} = props
-  const [activeTab, setActiveTab] = useState('color')
+
+  const getInitialTab = (val) => {
+    if (!val) return 'color'
+    if (PRESET_GRADIENTS.includes(val)) return 'gradient'
+    if (val.startsWith('linear-gradient')) return 'builder'
+    return 'custom'
+  }
+
+  const [activeTab, setActiveTab] = useState(getInitialTab(value))
   const [customValue, setCustomValue] = useState(value || '')
   const [gradientBuilder, setGradientBuilder] = useState({
     color1: '#ff0000',
@@ -71,6 +50,21 @@ export default function BackgroundInput(props) {
     const gradient = `linear-gradient(${newBuilder.angle}deg, ${newBuilder.color1}, ${newBuilder.color2})`
     onChange(set(gradient))
   }
+
+  useEffect(() => {
+    if (value?.startsWith('linear-gradient')) {
+      const match = value.match(
+        /linear-gradient\((\d+)deg,\s*(#[0-9a-fA-F]{3,6})(?:\s+\d+%?)?,\s*(#[0-9a-fA-F]{3,6})(?:\s+\d+%?)?\)/,
+      )
+      if (match) {
+        setGradientBuilder({
+          angle: parseInt(match[1], 10),
+          color1: match[2],
+          color2: match[3],
+        })
+      }
+    }
+  }, [value])
 
   return (
     <Stack space={3}>
