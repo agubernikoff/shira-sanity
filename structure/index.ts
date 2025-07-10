@@ -28,6 +28,7 @@ const hiddenDocTypes = (listItem: ListItemBuilder) => {
     'home',
     'page',
     'settings',
+    'collage'
   ].includes(id)
 }
 

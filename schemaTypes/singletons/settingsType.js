@@ -30,6 +30,17 @@ export const settingsType = defineType({
       name: 'pagesSideNav',
       type: 'menu',
     }),
+    defineField({
+      name: 'pagesHero',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'evenBetterHero',
+      type: 'collage',
+    }),
   ],
   preview: {
     prepare() {
