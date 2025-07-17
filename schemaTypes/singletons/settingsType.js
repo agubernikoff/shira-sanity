@@ -41,6 +41,17 @@ export const settingsType = defineType({
       name: 'evenBetterHero',
       type: 'collage',
     }),
+    defineField({
+      name: 'instagramLink',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'instagram',
+          type: 'instagram',
+        }),
+        {name: 'icon', type: 'image'},
+      ],
+    }),
   ],
   preview: {
     prepare() {

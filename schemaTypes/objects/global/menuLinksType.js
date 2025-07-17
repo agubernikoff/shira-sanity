@@ -13,5 +13,9 @@ export const menuLinksType = defineField({
       name: 'linkExternal',
       type: 'linkExternal',
     }),
+    defineField({
+      name: 'linkEmail',
+      type: 'linkEmail',
+    }),
   ],
 })

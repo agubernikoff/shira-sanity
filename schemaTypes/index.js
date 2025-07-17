@@ -6,8 +6,9 @@ const annotations = [linkEmailType, linkExternalType, linkInternalType]
 import {menuType} from './objects/global/menuType'
 import {menuLinksType} from './objects/global/menuLinksType'
 import {collageType} from './objects/collage'
+import {instagramType} from './objects/instagramType'
 
-const objects = [menuType, menuLinksType, collageType]
+const objects = [menuType, menuLinksType, collageType, instagramType]
 
 import {homeType} from './singletons/homeType'
 import {settingsType} from './singletons/settingsType'
