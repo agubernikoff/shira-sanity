@@ -16,10 +16,10 @@
   ],
   "dependencies": {
     "@sanity/image-url": "^1.1.0",
-    "@sanity/vision": "^3.98.0",
+    "@sanity/vision": "^4.4.1",
     "react": "^19.1",
     "react-dom": "^19.1",
-    "sanity": "^3.98.0",
+    "sanity": "^4.4.1",
     "slug": "^8.2.2",
     "styled-components": "^6.1.18"
   },

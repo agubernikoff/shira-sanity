@@ -11,6 +11,8 @@ export default defineConfig({
   projectId: '6hmqdhoc',
   dataset: 'production',
 
+  studioHost: 'shira-barlow', // 👈 this avoids the deploy prompt
+
   plugins: [structureTool({structure}), visionTool()],
 
   schema: {
