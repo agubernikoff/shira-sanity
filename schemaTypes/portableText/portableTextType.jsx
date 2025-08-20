@@ -37,7 +37,7 @@ export const portableTextType = defineField({
       },
       type: 'block',
     }),
-    // defineArrayMember({ type: 'accordion' }),
+    defineArrayMember({type: 'articleLinks'}),
     // defineArrayMember({ type: 'callout' }),
     // defineArrayMember({ type: 'grid' }),
     // defineArrayMember({ type: 'images' }),

@@ -1,7 +1,8 @@
 import {linkEmailType} from './objects/link/linkEmailType'
 import {linkExternalType} from './objects/link/linkExternalType'
 import {linkInternalType} from './objects/link/linkInternalType'
-const annotations = [linkEmailType, linkExternalType, linkInternalType]
+import {articleLinks} from './objects/link/articleLinks'
+const annotations = [linkEmailType, linkExternalType, linkInternalType, articleLinks]
 
 import {menuType} from './objects/global/menuType'
 import {menuLinksType} from './objects/global/menuLinksType'
