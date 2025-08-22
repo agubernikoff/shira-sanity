@@ -49,8 +49,12 @@ export default function CollageInput(props) {
                   src={url}
                   style={{
                     position: 'absolute',
-                    [img.horizontalAlignFrom ?? 'left']: img.horizontalPosition ?? '0',
-                    [img.verticalAlignFrom ?? 'top']: img.verticalPosition ?? '0',
+                    [img.horizontalAlignFrom && !img.centerHorizontally
+                      ? img.centerHorizontally
+                      : 'left']: img.horizontalPosition ?? '0',
+                    [img.verticalAlignFrom && !img.centerVertically
+                      ? img.verticalAlignFrom
+                      : 'top']: img.verticalPosition ?? '0',
                     width: img.width ?? 'auto',
                     zIndex: img.zIndex ?? 1,
                     objectFit: 'cover',
