@@ -38,6 +38,11 @@ export const settingsType = defineType({
       },
     }),
     defineField({
+      name: 'turnHeaderLogo',
+      title: 'Turn Header Logo White On About Pages',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'evenBetterHero',
       type: 'collage',
     }),
